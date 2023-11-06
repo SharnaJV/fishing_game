@@ -12,16 +12,14 @@ die = Die()
 roll_again = "yes"
 
 while True:
-    roll_again = input("Roll the die? (type \"yes\" or \"y\" then \"Enter\" to roll, anything else with \"Enter\" to quit)")
+    roll_again = input("Roll the die? (type \"yes\" or \"y\" then \"Enter\" to roll, anything else with \"Enter\" to quit): ")
 
     if roll_again.lower() == "yes" or roll_again.lower() == "y":
         result = die.roll()
         print("You rolled:", result)
         fish_result = get_fish(result)
-        print("Fish Result:")
         for key, value in fish_result.items():
-            print(f"{key}: {value}")
+            print("You caught a " +  {value}")
     else:
         print("Goodbye!")
         break
-    
