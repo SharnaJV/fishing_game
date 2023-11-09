@@ -1,7 +1,7 @@
-Fish type, Keeper, Is it a Fish, Points if kept, Points if released
-King George Whiting, Y, Y, 50, 70
-Lost Bait, N, N, -10, 0
-Small Mulloway (undersize), N, Y, -10, 10
-Snapper, Y, Y, 20, 20
-Large Mullet, Y, Y, 20, 20
-Seaweed Monster (random clump of seaweed), Y, N, 5, -5
+Fish type, Points if kept, Points if released
+King George Whiting, 50, 70
+Lost Bait, -10, 0
+Small Mulloway (undersize), -10, 10
+Snapper, 20, 20
+Large Mullet, 20, 20
+Seaweed Monster (random clump of seaweed), 5, -5
