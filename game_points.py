@@ -6,17 +6,18 @@ def r_fish_data():
     with open('fish_data.csv', 'r') as file:
         csv_file = csv.DictReader(file)
         for row in csv_file:
-            fish_type = row["Fish type"]
-            points_if_kept = int(row["Points if kept"])
-            points_if_released = int(row["Points if released"])
+            row = {key.lower(): value for key, value in row.items()}
+            fish_type = row["fish type"]
+            points_if_kept = int(row["points if kept"])
+            points_if_released = int(row["points if released"])
             fish_data[fish_type] = (points_if_kept, points_if_released)
     return fish_data
 
 #this function calculates the points based on whether user keeps or releases fish
 def points_math(fish_result):
-    fish_type = fish_result["fish_type"]
-    keep_fish = fish_result["kept"]
-    release_fish = fish_result["release"]
+    fish_type = fish_result.fish_type
+    keep_fish = fish_result.points_if_kept
+    release_fish = fish_result.points_if_released
 
     fish_data = r_fish_data()
 

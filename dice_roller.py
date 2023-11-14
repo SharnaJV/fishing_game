@@ -15,13 +15,15 @@ def roll_catch():
     roll_again = "yes"
     total_points = 0
 
+    _, fish_mapping = get_fish(1)
+
     while True:
         roll_again = input("Go fishing? (type \"yes\" or \"y\" then \"Enter\" to roll, anything else with \"Enter\" to quit): ")
 
         if roll_again.lower() == "yes" or roll_again.lower() == "y":
             result = die.roll()
             fish_result = get_fish(result)
-            fish_type = fish_result["fish_type"]
+            fish_type = fish_result.fish_type
             # points_if_kept = points_math(fish_type)
             # points_if_released = points_math(fish_type)
             print("Casting your line...")
@@ -30,7 +32,7 @@ def roll_catch():
             time.sleep(2)
             print("You have caught a...")
             time.sleep(1)
-            print(fish_result["fish_type"])
+            print(fish_result.fish_type)
             keep = input("Would you like to keep your catch? \"y\" or \"n\": ")
             if keep == "y" :
                 points_if_kept = points_math(fish_result)
@@ -45,5 +47,3 @@ def roll_catch():
         else:
             print(f"Your final score is: {total_points} and it has been saved to \"fishing_results.csv\" Goodbye!")
             break
-
-roll_catch()

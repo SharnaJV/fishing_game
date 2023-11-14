@@ -23,6 +23,7 @@ if login():
     print("---------------------------------")
     print("          Gone Fishing!          ")
     print("---------------------------------")
+    time.sleep(1)
 
     name = input("What is your name?: ")
     answer = input("Would you like to go fishing, " + name + "? \"y\" for yes or \"n\" for no: ")
@@ -34,9 +35,10 @@ if login():
             writer.writerow([name])
         roll_catch() 
     
-    elif    answer == "no" or answer == "n":
+    elif answer == "no" or answer == "n":
         print("Okay, bye for now!")
         exit()
  
     else:
         print("You are confusing me!")
+        

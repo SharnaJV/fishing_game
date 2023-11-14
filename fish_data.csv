@@ -1,7 +1,7 @@
-Fish type, Points if kept, Points if released
-King George Whiting, 50, 70
-Lost Bait, -10, 0
-Small Mulloway (undersize), -10, 10
-Snapper, 20, 20
-Large Mullet, 20, 20
-Seaweed Monster (random clump of seaweed), 5, -5
+dice_roll, fish_type,keeper,is_fish,points_if_kept,points_if_released
+1, King George Whiting,Y,Y,50,70
+2, Lost Bait,N,N,-10,0
+3, Small Mulloway (undersize),N,Y,-10,10
+4, Snapper,Y,Y,20,20
+5, Large Mullet,Y,Y,20,20
+6, Seaweed Monster (random clump of seaweed),Y,N,5,-5

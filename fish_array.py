@@ -1,58 +1,39 @@
 import csv
 
 global fish_caught
-
 def get_fish(die_roll):
     data_arr =[]
     global fdata
     global fish_caught
     with open("fish_data.csv", 'r') as file:
         csv_file = csv.DictReader(file)
+        fish_mapping = {}
         for row in csv_file:
-            data_arr.append(dict(row))
+            row = {key.lower(): value for key, value in row.items()}
+            fish_item = fish_caught(
+                fish_type=row["fish_type"],
+                keeper=row["keeper"],
+                is_fish=row["is_fish"],
+                points_if_kept=row["points_if_kept"],
+                points_if_released=row["points_if_released"],
+                dice_roll=int(row["dice_roll"])
+            )
+            data_arr.append(fish_item)
+            fish_mapping[int(row["dice_roll"])] = fish_item.fish_type
+            
+    fish_result = data_arr[die_roll - 1]
+    fdata = [fish_result.dice_roll, fish_result.fish_type, fish_result.keeper, fish_result.is_fish, fish_result.points_if_kept, fish_result.points_if_released]
+    return fish_item
 
-    fdata = list(data_arr[die_roll - 1].values())
+class fish_caught:
+    def __init__(self, dice_roll, fish_type, keeper, is_fish, points_if_kept, points_if_released):
+        self.dice_roll = dice_roll
+        self.fish_type = fish_type
+        self.keeper = keeper
+        self.is_fish = is_fish
+        self.points_if_kept = points_if_kept
+        self.points_if_released = points_if_released
+        
+    def __str__(self):
+        return f"{self.dice_roll}, {self.fish_type}, {self.keeper}, {self.is_fish}, {self.points_if_kept}, {self.points_if_released}"
 
-    fish_caught = {
-        "fish_type" : fdata[0],
-        "kept" : int(fdata[1]),
-        "release" : int(fdata[2])
-    }
-    return fish_caught
-
-# def fish_dictionary():
-#     fish01 = {"Fish Type" : "King George Whiting",
-#               "Keep?" : "Y",
-#               "Is it a Fish?" : "Y",
-#               "Points if Kept" : 50,
-#               "Points if Released" : 70}
-    
-#     fish02 = {"Fish Type" : "Lost Bait",
-#               "Keep?" : "N",
-#               "Is it a Fish?" : "N",
-#               "Points if Kept" : -10,
-#               "Points is released" : 0}
-    
-#     fish03 = {"Fish Type" : "Small Mulloway (undersize)",
-#               "Keep?" : "N",
-#               "Is it a Fish?" : "Y",
-#               "Points if Kept" : -10,
-#               "Points is released" : 10}
-    
-#     fish04 = {"Fish Type" : "Snapper",
-#               "Keep?" : "Y",
-#               "Is it a Fish?" : "Y",
-#               "Points if Kept" : 20,
-#               "Points is released" : 20}
-    
-#     fish05 = {"Fish Type" : "Large Mullet",
-#               "Keep?" : "Y",
-#               "Is it a Fish?" : "Y",
-#               "Points if Kept" : 20,
-#               "Points is released" : 20}
-    
-#     fish06 = {"Fish Type" : "Seaweed Monster (random clump of seaweed)",
-#               "Keep?" : "Y",
-#               "Is it a Fish?" : "N",
-#               "Points if Kept" : 5,
-#               "Points is released" : -5}
