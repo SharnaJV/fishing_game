@@ -1,2 +1,2 @@
-Username, password
-guest, guestpass01
+username,hash_pass,salt
+guest,$2b$12$G74LJYYNA.zk97YiLPlRJ.iMXPX0eEulIA0P2MtaYW0g6xGoZ1.Zq,$2b$12$G74LJYYNA.zk97YiLPlRJ.
